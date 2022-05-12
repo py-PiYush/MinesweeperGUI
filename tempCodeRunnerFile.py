@@ -1,0 +1,1 @@
+T * percentage) / 100
