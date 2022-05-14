@@ -17,6 +17,15 @@ top_frame = Frame(
 
 top_frame.place(x=0, y=0)
 
+game_title = Label(
+    top_frame,
+    bg=settings.COLOR,
+    fg="white",
+    text="MineSweeper",
+    font=("Jokerman", 24),
+)
+game_title.place(x=utils.width_prct(23), y=10)
+
 bottom_frame = Frame(
     root, bg=settings.COLOR, width=settings.WIDTH, height=utils.height_prct(20)
 )
@@ -37,6 +46,13 @@ for x in range(settings.GRID_SIZE):
         c = Cell(y, x)
         c.create_btn_object(center_frame)
         c.cell_btn_object.grid(column=x, row=y)
+
+Cell.create_cell_count_label(bottom_frame)
+Cell.cell_count_label_object.place(x=utils.width_prct(10), y=0)
+
+Cell.create_timer_label(bottom_frame)
+Cell.timer_object.place(x=utils.width_prct(60), y=0)
+Cell.update_time()
 
 Cell.randomize_mines()
 
